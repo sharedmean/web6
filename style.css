@@ -1,0 +1,95 @@
+body
+{
+	background-image: url("https://million-wallpapers.ru/wallpapers/1/64/468669496257045/belye-kameshki.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-size: 18px;
+	text-align: center;
+	margin: auto;
+}
+
+form, .xxx, table.xxx{
+
+	background-image: url("https://roomester.ru/wp-content/uploads/2019/07/tyul-dlya-zala38.jpg");
+	opacity:87%;
+	background-repeat: no-repeat;
+	border-radius: 10px;
+	width:500px;	
+    margin: auto;
+	outline: none;
+	padding:30px;
+	margin-top:70px;
+	
+	text-align: center;
+	text-decoration: none;
+	text-shadow: rgba(255,255,255,.5) 1px 1px, rgba(220, 210, 210, 0.3) 3px 7px 3px;
+	font-family: "Century Gothic";
+}
+
+#z{
+	margin-top:10px;
+}
+
+/*form:hover
+{
+	background-position: -200% 0, 0 0, 0 0, 0 100%, 0 4px, 0 calc(100% - 4px);
+	transition: 1.0s cubic-bezier(0.65, 0.05, 0.36, 1);
+    background-color:#abaaa3ba;
+    color:#ffffff;
+    text-shadow: none;
+
+}*/
+
+label{
+	margin-left:10px;
+
+}
+.zzz {
+	width: 300px;
+	font-size: 13px;
+	padding: 6px 0 4px 10px;
+	border: 1px solid #cecece;
+	background: #F6F6f6;
+	border-radius: 8px;
+}
+textarea {
+	/* = Убираем скролл */
+	overflow: auto;
+
+	/* = Убираем увеличение */
+	resize: none;
+	width: 300px;
+	height: 50px;
+
+	/* = Добавим фон, рамку, отступ*/
+	background: #f6f6f6;
+	border: 1px solid #cecece;
+	border-radius: 8px 0 0 0;
+	padding: 8px 0 8px 10px;
+}
+#messages
+{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+table.11 {
+background: url("https://html5book.ru/wp-content/uploads/2019/04/suggestions.png") 98% 86% no-repeat;
+}
+table.11 th {
+font-weight: normal;
+font-size: 14px;
+color: #339;
+padding: 10px 12px;
+background: white;
+}
+table.11 td {
+color: #669;
+border-top: 1px solid white;
+padding: 10px 12px;
+background: rgba(51, 51, 153, .2);
+transition: .3s;
+}
+table.11 tr:hover td {
+background: rgba(51, 51, 153, .1);
+}
