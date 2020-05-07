@@ -5,7 +5,9 @@
  * Задача 6. Реализовать вход администратора с использованием
  * HTTP-авторизации для просмотра и удаления результатов.
  **/
-$user = 'u20385';
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+ $user = 'u20385';
 $pas = '9967441';
 $db = new PDO('mysql:host=localhost;dbname=u20385', $user, $pas,
     array(PDO::ATTR_PERSISTENT => true));
@@ -39,8 +41,12 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
   print('<h1>401 Требуется авторизация</h1>');
   exit();
 }
+ 
 
-{
+
+
+
+
     
     ?>
     <button class="zzz" id="z" name="submit"  onclick="document.location.replace('exit.php');">Exit</button><br>  
@@ -48,101 +54,15 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
    
     <p> Delete by login </p>
     <input name="login"  class="zzz">
-     <input type="submit" value="ok" id="z" class="zzz"/>
+     <input type="submit" value="ok" id="z" class="zzz" />
    </form>
    
    <?php    
  
-   if (!empty($_POST['login'])) {
-        
-        $user = 'u20385';
-        $pas = '9967441';
-        $db = new PDO('mysql:host=localhost;dbname=u20385', $user, $pas,
-            array(PDO::ATTR_PERSISTENT => true));
-        
-        // Подготовленный запрос. Не именованные метки.
-        
-        try {
-            $login=$_POST['login'];
-            $stmt = $db->prepare("DELETE FROM application WHERE login = ?");
-            $stmt->execute([$login]);
-        }
-        catch(PDOException $e){
-            print('Error : ' . $e->getMessage());
-            exit();
-        }
-        
+
    
-   
-       }
-   
-   
-   /* 
- 
-        $user = 'u20385';
-        $pas = '9967441';
-        $db = new PDO('mysql:host=localhost;dbname=u20385', $user, $pas,
-            array(PDO::ATTR_PERSISTENT => true));
-        
-        
-        
-        
-        try {
-            $stmt = $db->prepare("SELECT COUNT(*) FROM application");
-            $stmt->execute();
-            $b = $stmt->fetch();                             //узнаёт число строк в таблице
-            printf("<div>%s</div>", $b[0]);
-          
-            
-             
-            for($i=1;$i<=$b[0];$i++)                      //выводит всё на экран
-            {
-            
-            $stmt = $db->prepare("SELECT fio FROM application WHERE id = ?");
-            $stmt->execute([$i]);
-            $values['fio'] = $stmt->fetchColumn();
-            printf("<div>%s</div>", $values['fio']);
-            
-            $stmt = $db->prepare("SELECT email FROM application WHERE id = ?");
-            $stmt->execute([$i]);
-            $values['email'] = $stmt->fetchColumn();
-            printf("<div>%s</div>", $values['email']);
-            
-            $stmt = $db->prepare("SELECT date FROM application WHERE id = ?");
-            $stmt->execute([$i]);
-            $values['date'] = $stmt->fetchColumn();
-            printf("<div>%s</div>", $values['date']);              
-            
-            $stmt = $db->prepare("SELECT sex FROM application WHERE id = ?");
-            $stmt->execute([$i]);
-            $values['sex'] = $stmt->fetchColumn();
-            printf("<div>%s</div>", $values['sex']);
-            
-            $stmt = $db->prepare("SELECT limbs FROM application WHERE id = ?");
-            $stmt->execute([$i]);
-            $values['limbs'] = $stmt->fetchColumn();
-            printf("<div>%s</div>", $values['limbs']);
-            
-            $stmt = $db->prepare("SELECT bio FROM application WHERE id = ?");
-            $stmt->execute([$i]);
-            $values['bio'] = $stmt->fetchColumn();
-            printf("<div>%s</div>", $values['bio']);
-            }
-            
-            
-        }
-        catch(PDOException $e){
-            print('Error : ' . $e->getMessage());
-            exit();
-        }
-        
-      */
         
         $link = mysqli_connect('localhost', 'u20385', '9967441', 'u20385');
-    
-        
-        
-        
         $query1 = mysqli_query($link, "SELECT * FROM application");
         
         $myrow = mysqli_fetch_array($query1);
@@ -158,7 +78,33 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
         </table>
         <?php 
         
-        
+           
+
 }
+else{
+    if (!empty($_POST['login'])) {
+        
+        
+        $user = 'u20385';
+        $pas = '9967441';
+        $db = new PDO('mysql:host=localhost;dbname=u20385', $user, $pas,
+            array(PDO::ATTR_PERSISTENT => true));
+        // Подготовленный запрос. Не именованные метки.
+        
+        try {
+            $login=$_POST['login'];
+            $stmt = $db->prepare("DELETE FROM application WHERE login = ?");
+            $stmt->execute([$login]);
+        }
+        catch(PDOException $e){
+            print('Error : ' . $e->getMessage());
+            exit();
+        }
+        $new_url = 'admin.php';
+        header('Location: '.$new_url);
+   
+   
+       }
+    }
 ?>
 
